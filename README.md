@@ -35,6 +35,6 @@ python3 app.py
 
 Open `https://127.0.0.1:5000` to access the Todo-App.
 
-__
+___
 
 If you liked this project, you can *star* this repo and *follow* me.
