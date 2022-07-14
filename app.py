@@ -32,6 +32,14 @@ def update(todo_id):
     db.session.commit()
     return redirect(url_for("home"))
 
+@app.route('/update_all')
+def update_all():
+    todo = Todo.query.all()
+    for x in todo:
+        x.complete = True
+    db.session.commit()
+    return redirect(url_for("home"))
+
 @app.route('/delete/<int:todo_id>')
 def delete(todo_id):
     todo = Todo.query.filter_by(id=todo_id).first()
@@ -39,6 +47,13 @@ def delete(todo_id):
     db.session.commit()
     return redirect(url_for('home'))
 
+@app.route('/delete_all')
+def delete_all():
+    todo = Todo.query.all()
+    for x in todo:
+        db.session.delete(x)
+    db.session.commit()
+    return redirect(url_for("home"))
 if __name__ == "__main__":
     db.create_all()
     app.run(debug=True)
